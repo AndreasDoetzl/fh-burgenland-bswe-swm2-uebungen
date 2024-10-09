@@ -10,6 +10,7 @@ public class StringService {
     
     /**
      * Converts a string to upper case.
+     * If the given string is null or empty, null or empty will returned.
      * 
      * @param string the string to convert
      * @return the modified string in upper case
