@@ -20,11 +20,17 @@ public class StringControllerTest {
 
     @Test
     public void testToUpperCase() {
-        when(service.toUpperCase("abc")).thenReturn("abc");
+        when(service.toUpperCase("abc")).thenReturn("ABC");
 
         assertEquals("ABC", controller.upper("abc"));
         verify(service, times(1)).toUpperCase("abc");
     }
 
-    // FIXME: implement more tests
+    @Test
+    public void testToUpperCase_EmptyString() {
+        when(service.toUpperCase("")).thenReturn("");
+
+        assertEquals("", controller.upper(""));
+        verify(service, times(1)).toUpperCase("");
+    }
 }

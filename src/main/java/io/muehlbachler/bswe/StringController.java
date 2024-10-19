@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RestController
 public class StringController {
     @Autowired
-    private StringService stringService = new StringService();
+    private StringService stringService;
 
     @GetMapping("/upper")
     String upper(@RequestParam(value = "string") final String text) {

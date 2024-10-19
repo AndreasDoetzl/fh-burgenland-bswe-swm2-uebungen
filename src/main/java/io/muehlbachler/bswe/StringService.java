@@ -2,6 +2,8 @@ package io.muehlbachler.bswe;
 
 import org.springframework.stereotype.Service;
 
+import java.util.Locale;
+
 /**
  * Service for string operations.
  */
@@ -16,7 +18,6 @@ public class StringService {
      * @return the modified string in upper case
      */
     public String toUpperCase(final String string) {
-        // FIXME: implement
-        return string;
+        return string == null ? null : string.toUpperCase(Locale.getDefault());
     }
 }
