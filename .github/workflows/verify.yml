@@ -1,34 +1,33 @@
 ---
-name: Verify
+name: Pipeline
 
 on:
   push:
     branches:
       - main
-    pull_request:
+  pull_request:
 
-  jobs:
-      test:
-        runs-on: ubuntu-latest
-        name: Unit Tests
-        strategy:
-          max-parallel: 4
-          matrix:
-            java-version: [ "22" ]
+jobs:
 
-        steps:
-          - name: Checkout repository
-            uses: actions/checkout@v4
-            with:
-              fetch-depth: 0
+  test:
+    runs-on: ubuntu-latest
+    name: Unit Tests
+    strategy:
+      max-parallel: 4
+      matrix:
+        java-version: ["22"]
 
-          - name: Setup Java
-            uses: actions/setup-java@v4
-            with:
-              java-version: "${{ matrix.java-version }}"
-              distribution: "corretto"
-          - name: Setup Gradle
-            uses: gradle/actions/setup-gradle@v4
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-          - name: Run Tests
-            run: ./gradlew test
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          java-version: "${{ matrix.java-version }}"
+          distribution: "corretto"
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v4
+
+      - name: Run Tests
+        run: ./gradlew test
